@@ -1,0 +1,20 @@
+version: "3"
+services:
+  reverseproxy:
+    build:
+      context: .
+    image: kamalwalia/udagram-reverseproxy
+  backend_user:
+    build:
+      context: ../../api-user
+    image: kamalwalia/udagram-api-user
+  backend_feed:
+    build:
+      context: ../../api-feed  
+    image: kamalwalia/udagram-api-feed
+  frontend:
+    build:
+      context: ../../frontend
+      args:
+        - BUILD_ENV=development
+    image: kamalwalia/udagram-frontend:local
